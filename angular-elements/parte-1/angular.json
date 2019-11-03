@@ -2,5 +2,82 @@
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
   "version": 1,
   "newProjectRoot": "projects",
-  "projects": {}
+  "projects": {
+    "heroes-creator": {
+      "projectType": "application",
+      "schematics": {},
+      "root": "projects/heroes-creator",
+      "sourceRoot": "projects/heroes-creator/src",
+      "prefix": "hc",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/heroes-creator",
+            "index": "projects/heroes-creator/src/index.html",
+            "main": "projects/heroes-creator/src/main.ts",
+            "polyfills": "projects/heroes-creator/src/polyfills.ts",
+            "tsConfig": "projects/heroes-creator/tsconfig.app.json",
+            "aot": false,
+            "assets": [
+              "projects/heroes-creator/src/favicon.ico",
+              "projects/heroes-creator/src/assets"
+            ],
+            "styles": [
+              "projects/heroes-creator/src/styles.css"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "projects/heroes-creator/src/environments/environment.ts",
+                  "with": "projects/heroes-creator/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "heroes-creator:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "heroes-creator:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "heroes-creator:build"
+          }
+        }
+      }
+    }},
+  "defaultProject": "heroes-creator"
 }
