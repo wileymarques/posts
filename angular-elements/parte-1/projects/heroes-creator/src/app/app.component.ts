@@ -5,11 +5,7 @@ import { Component } from '@angular/core';
   template: `
     <h1>My Heroes</h1>
     <hc-creator (newHero)="addHero($event)"></hc-creator>
-    <ul>
-      <li *ngFor="let hero of heroes">
-        {{ hero }}
-      </li>
-    </ul>
+    <hv-heroes-visualizer [heroes]="heroes" (deleteHero)="deleteHero($event)"></hv-heroes-visualizer>
   `,
 })
 export class AppComponent {
@@ -21,6 +17,12 @@ export class AppComponent {
       ...this.heroes,
       newHero,
     ];
+  }
+
+  deleteHero(heroToDelete: string): void {
+    this.heroes = this.heroes.filter((hero: string) => {
+      return hero !== heroToDelete;
+    });
   }
 
 }

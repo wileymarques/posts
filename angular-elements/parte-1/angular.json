@@ -78,6 +78,41 @@
           }
         }
       }
+    },
+    "heroes-visualizer": {
+      "projectType": "library",
+      "root": "projects/heroes-visualizer",
+      "sourceRoot": "projects/heroes-visualizer/src",
+      "prefix": "hv",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/heroes-visualizer/tsconfig.lib.json",
+            "project": "projects/heroes-visualizer/ng-package.json"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/heroes-visualizer/src/test.ts",
+            "tsConfig": "projects/heroes-visualizer/tsconfig.spec.json",
+            "karmaConfig": "projects/heroes-visualizer/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/heroes-visualizer/tsconfig.lib.json",
+              "projects/heroes-visualizer/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
     }},
   "defaultProject": "heroes-creator"
 }

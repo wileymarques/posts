@@ -5,6 +5,8 @@ import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { CreatorComponent } from './creator.component';
 
+import { HeroesVisualizerModule } from 'heroes-visualizer';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -13,6 +15,7 @@ import { CreatorComponent } from './creator.component';
   imports: [
     BrowserModule,
     FormsModule,
+    HeroesVisualizerModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
