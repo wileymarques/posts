@@ -17,7 +17,15 @@
     "lib": [
       "es2018",
       "dom"
-    ]
+    ],
+    "paths": {
+      "heroes-visualizer": [
+        "dist/heroes-visualizer"
+      ],
+      "heroes-visualizer/*": [
+        "dist/heroes-visualizer/*"
+      ]
+    }
   },
   "angularCompilerOptions": {
     "fullTemplateTypeCheck": true,
