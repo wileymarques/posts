@@ -10,6 +10,6 @@ import { HeroesVisualizerComponent } from './heroes-visualizer.component';
     CommonModule,
     FormsModule,
   ],
-  exports: [HeroesVisualizerComponent],
+  entryComponents: [HeroesVisualizerComponent],
 })
 export class HeroesVisualizerModule { }
