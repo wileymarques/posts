@@ -1,5 +1,5 @@
-import { soma } from './soma.ts';
-import { Calculadora } from './calculadora';
+import { soma } from './soma.js';
+import { Calculadora } from './calculadora.js';
 
 // const soma = (n1: number, n2: number): number => {
 //   return n1 + n2;

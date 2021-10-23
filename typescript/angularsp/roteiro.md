@@ -65,3 +65,9 @@
   - porém tudo que é `private` e `public` sumiu do código, porque esse acessor só existe em TypeScript
   - como só existe em typescript, a checkagem de atributos e métodos privados só acontece em tempo de design e compilação, como vimos lá no começo
   - e ainda é possível acessar um atributo privado usando uma sagacidade
+  - basta usar a sintaxe `['n1']`, apesar de altamente não recomendado
+  - JS "puro" já tem uma sintaxe de atributos privados, usando um # na frente
+  - > alterar classe Calculadora para usar # e testar rodando o deno
+  - porém o código gerado em typescript é um tanto pesado, por usar WeakMap ao fazer o down leveling
+  - para fazer o código gerado sem weakmaps, deve-se usar o target esnext
+  - só que esnext é como se vc estivesse optando por uma espécie de beta, então precisa usar com cautela
