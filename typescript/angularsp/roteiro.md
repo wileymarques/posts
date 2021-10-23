@@ -29,15 +29,39 @@
   - > colocar `export` na frente da função
 	- E importar onde queremos usar
   - > abrir `index.ts` e usar `import` para importar a função
-	- Mas como isso fica em JavaScript?
-	- compilar arquivo com import/export para JS
-	- essa sintaxe chamada de import/export não existiu sempre, foi introduzida em versões relativamente recentes
+	- Mas como isso fica em JavaScript após compilar?
+	- > compilar arquivo com import/export para JS
+  - podemos ver uma certa diferença no código que escrevemos e o que foi gerado na compilação
+  - por exemplo, `const` virou `var` e o `export` e `import` foram convertidos para outra coisa
+	- isso se dá ao fato de que essa sintaxe chamada de import/export é relativamente nova
 	- e alguns sistemas, Node por exemplo, não teve esse suporte por bastante tempo
 	- sem nem mencionar o IE (morreu?)
-	- durante a vida do JS, alguns sistemas de módulos foram criados
+  - para o JS, hoje em dia, sendo bem simplista, é como se cada arquivo fosse um módulo
+	- mas durante a vida do JS, alguns sistemas de módulos foram criados, antes dessa sintaxe de import/export
 	- como o commonjs
-	- e o typescript tem suporte a isso, bastando informar o tipo de módulo ao compilar o código
-	- mostrar mesmo código compilado em commonjs
-	-
+	- e o typescript tem suporte a isso também
+  - por padrão, quando compilamos com a CLI do typescript, o sistema de módulo usado é o commonjs
+  - mas podemos alterar informando um valor no parâmetro `--module`
+  - > compilar o mesmo código usando `--module es2020`
+  - aqui, compilando com es2020 podemos ver import e export no código
+  - mas as variáveis ainda são declaradas com `var`, ao invés de `const`
+  - isso porque outra configuração importante é o `target`
+  - que é basicamente o "alvo" de onde o código será executado
+  - por padrão, o valor vem como es3 !!!
+  - mas para alterar, basta colocar um valor diferente na flag `--target`
+  - > compilar com target es2020
 - Classes em TypeScript
-	-
+  - agora vamos ver alguns exemplos de como alguns trechos de código são gerados pela tsc
+  - começando com classes
+  - > criar uma classe chamada `Calculadora` com atributos `n1` e `n2` privados
+  - > com método chamado `subtrair`, retornando a substração de n2 de n1
+  - > por serem privados, os valores serão recebidos via construtor
+  - > colocar `export` na classe e importar no arquivo index.ts
+  - > compilar e explicar o código gerado nos arquivos index.js e calculadora.js
+  - classe vira function
+  - porque classes não existiam em es3
+  - compilar em es5 e mostrar que classes ainda não existiam
+  - compilar para es2015 e ver que classes existem
+  - porém tudo que é `private` e `public` sumiu do código, porque esse acessor só existe em TypeScript
+  - como só existe em typescript, a checkagem de atributos e métodos privados só acontece em tempo de design e compilação, como vimos lá no começo
+  - e ainda é possível acessar um atributo privado usando uma sagacidade

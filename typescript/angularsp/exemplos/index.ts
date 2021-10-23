@@ -1,9 +1,15 @@
-const numero1: number = 2;
-const numero2: number = 3;
+import { soma } from './soma.ts';
+import { Calculadora } from './calculadora';
 
-const soma = (n1: number, n2: number): number => {
-  return n1 + n2;
-};
+// const soma = (n1: number, n2: number): number => {
+//   return n1 + n2;
+// };
 
-const resultado: number = soma(numero1, numero2);
-console.log(`Resultado é: ${resultado}`);
+const resultadoSoma: number = soma(2, 3);
+console.log(`Resultado é: ${resultadoSoma}`);
+
+const calculadora = new Calculadora(5, 2);
+const resultadoCalculadora = calculadora.subtrair();
+console.log(`Resultado é: ${resultadoCalculadora}`);
+
+console.log(`n1 é ${calculadora['n1']}`);

@@ -1,0 +1,6 @@
+
+vscode:
+  extensions:
+    - yzhang.markdown-all-in-one
+    - editorconfig.editorconfig
+    - davidanson.vscode-markdownlint
