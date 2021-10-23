@@ -1,0 +1,43 @@
+# TypeScript
+
+- O que é TypeScript
+	- Uma ferramenta que nos ajuda a garantir a qualidade do código através de um sistema de tipagem
+	- Muitos acham que JavaScript não tem tipos
+	- Mas na verdade, apesar de ser fracamente tipada, os tipos estão lá
+	- Só usar `typeof` em alguma variável para ver
+	- Os mais comuns são `string`, `number`, `boolean`
+	- TypeScript entra aqui para ajudar a escrever o código com esses tipos de maneira explícita
+	- E nos “forçando” a usar o tipo correto
+	- > Escrever código com tipagem
+- Como compilar um código TypeScript para JavaScript
+  - Mas o navegador, atualmente, não interpreta TypeScript e sim JavaScript
+  - por isso, precisamos passar o nosso código por um processo de compilação, ou transpilação
+  - uma das formas de fazer isso é utilizando a CLI do próprio typescript, instalando via npm
+  - > instalar a CLI do typescript no node
+  - > usar comando `tsc index.ts`
+	- > Mostrar código gerado em JavaScript sem os tipos
+	- apesar de ter tipos, TypeScript não garante type safety em runtime
+	- Mas nos informa durante a escrita e compilação do código
+  - apesar de o editor de código nos informar do erro no código, é possível ignorar e partir para a compilação
+  - mas a CLI do typescript também já nos informa do mesmo erro
+  - > Mostrar compilação do código ignorando erro na escrita
+- Formatos (módulos) gerados (commonjs, es5, es2020)
+	- Uma das coisas que fazemos para deixar o projeto legível é separar o código em arquivos separados
+	- Podemos deixar, por exemplo, uma função em um arquivo separado e importar onde quisermos
+	- > Criar um arquivo com uma função de soma, recebendo dois números e retornando a soma entre elas
+	- Para fazer isso precisamos, nesse arquivo, exportar a função a ser reutilizada
+  - > colocar `export` na frente da função
+	- E importar onde queremos usar
+  - > abrir `index.ts` e usar `import` para importar a função
+	- Mas como isso fica em JavaScript?
+	- compilar arquivo com import/export para JS
+	- essa sintaxe chamada de import/export não existiu sempre, foi introduzida em versões relativamente recentes
+	- e alguns sistemas, Node por exemplo, não teve esse suporte por bastante tempo
+	- sem nem mencionar o IE (morreu?)
+	- durante a vida do JS, alguns sistemas de módulos foram criados
+	- como o commonjs
+	- e o typescript tem suporte a isso, bastando informar o tipo de módulo ao compilar o código
+	- mostrar mesmo código compilado em commonjs
+	-
+- Classes em TypeScript
+	-
