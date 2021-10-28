@@ -5,15 +5,23 @@
 	- Muitos acham que JavaScript não tem tipos
 	- Mas na verdade, apesar de ser fracamente tipada, os tipos estão lá
 	- Só usar `typeof` em alguma variável para ver
+	- > rodar deno mostrando a tipagem de alguns valores
 	- Os mais comuns são `string`, `number`, `boolean`
 	- TypeScript entra aqui para ajudar a escrever o código com esses tipos de maneira explícita
 	- E nos “forçando” a usar o tipo correto
-	- > Escrever código com tipagem
+	- > criar arquivo index.ts
+	- > Escrever uma função soma recebendo dois números, sem e com tipagem
+	- essa tipagem ajuda em muitos cenários do nosso dia-a-dia como desenvolvedor
+	- um deles é evitar que a gente tente fazer uma operação indevida em um tipo qualquer
+	- > mostrar tentando executar um método em n1
+	- ou até o consumidor da nossa função saber qual o tipo de valores ele pode passar
+	- > mostrar usando função passando string ao invés de número
 - Como compilar um código TypeScript para JavaScript
   - Mas o navegador, atualmente, não interpreta TypeScript e sim JavaScript
   - por isso, precisamos passar o nosso código por um processo de compilação, ou transpilação
   - uma das formas de fazer isso é utilizando a CLI do próprio typescript, instalando via npm
   - > instalar a CLI do typescript no node
+  - e rodando através do comando tsc
   - > usar comando `tsc index.ts`
 	- > Mostrar código gerado em JavaScript sem os tipos
 	- apesar de ter tipos, TypeScript não garante type safety em runtime
@@ -50,6 +58,15 @@
   - por padrão, o valor vem como es3 !!!
   - mas para alterar, basta colocar um valor diferente na flag `--target`
   - > compilar com target es2020
+- tsconfig
+  - perfeito, agora a gente já sabe como fazer a transpilação do código no formato que queremos
+  - mas fica bastante complicado termos que a toda execução ficar passando esses parämetros manualmente
+  - podendo até errar durante a digitação
+  - para evitar essa repetição, podendo criar um arquivo de configuração do TS, chamado tsconfig
+  - nele podemos colocar todos esses valores
+  - > criar arquivo tsconfig.json colocando target es2020, module es2020, outdir como dist e index.ts no files
+  - agora para executar, basta informarmos esse arquivo com o parämetro -p para o tsc
+  - > executar tsc -p tsocnfig.json
 - Classes em TypeScript
   - agora vamos ver alguns exemplos de como alguns trechos de código são gerados pela tsc
   - começando com classes
@@ -57,6 +74,7 @@
   - > com método chamado `subtrair`, retornando a substração de n2 de n1
   - > por serem privados, os valores serão recebidos via construtor
   - > colocar `export` na classe e importar no arquivo index.ts
+  - > comentar module e target no tsconfig
   - > compilar e explicar o código gerado nos arquivos index.js e calculadora.js
   - classe vira function
   - porque classes não existiam em es3
@@ -64,10 +82,86 @@
   - compilar para es2015 e ver que classes existem
   - porém tudo que é `private` e `public` sumiu do código, porque esse acessor só existe em TypeScript
   - como só existe em typescript, a checkagem de atributos e métodos privados só acontece em tempo de design e compilação, como vimos lá no começo
-  - e ainda é possível acessar um atributo privado usando uma sagacidade
-  - basta usar a sintaxe `['n1']`, apesar de altamente não recomendado
-  - JS "puro" já tem uma sintaxe de atributos privados, usando um # na frente
+  - > tentar acessar a propriedade n1 do objeto calculadora no index.ts e ver erro pq é private
+  - mas ainda é possível acessar um atributo privado usando uma sagacidade
+  - > usar a sintaxe `['n1']` e rodar no deno
+  - mas essa sagacidade não é recomendada
+  - JS "puro" já tem uma sintaxe de atributos realmente privados, usando um # na frente
   - > alterar classe Calculadora para usar # e testar rodando o deno
   - porém o código gerado em typescript é um tanto pesado, por usar WeakMap ao fazer o down leveling
+  - > mostrar dist com weakmaps
   - para fazer o código gerado sem weakmaps, deve-se usar o target esnext
+  - > compilar com esnext e mostrar sem os weakmaps
   - só que esnext é como se vc estivesse optando por uma espécie de beta, então precisa usar com cautela
+- Interfaces
+  - Agora vamos ver rápido como funcionam as interfaces
+  - elas costumam ser usadas para definir o contrato de alguma coisa
+  - por exemplo, podemos criar um método chamado multiplicar na classe Calculadora e receber cada parämetro individualmente
+  - > montar método recebendo n1 e n2 do tipo number
+  - mas quando um método pode receber muitos parämetros, pode ficar bastante complicado de manter
+  - principalmente quando envolvem parämetros opcionais
+  - uma alternativa seria fazer o método multiplicar receber um objeto
+  - > alterar método para receber objeto com nome params com n1 e n2 sendo suas propriedades
+  - fica até fácil colocarmos parämetros opcionais
+  - mas não é incomum termos que usar o mesmo tipo em diversos lugares
+  - por exemplo, se tivéssemos um método chamado dividir, teríamos que copiar e colar esse mesmo objeto
+  - já que os parämetros recebidos seriam iguais
+  - > criar método dividir recebendo o objeto params
+  - quando esse tipo for bastante reutilizado, também fica dificil a manutenção
+  - então podemos extrair esse objeto para uma interface e importar para substituir esse objeto em cada método
+  - > criar interface de nome CalculadoraParams no mesmo formato do objeto params
+  - > importar interface na classe Calculadora e colocar nos métodos multiplicar e dividir
+  - fica mais fácil reaproveitar
+  - e uma coisa interessante sobre interfaces é que, quando compilamos
+  - > compilar o código para dist e mostrar resultado
+  - a interface simplesmente some
+  - pq interfaces não existem em JS, funcionando apenas no contexto do TS
+  - classes também podem ser usadas para tipar os parämetros de um método
+  - mas, dependendo do tamanho do projeto, utilizar interfaces pode gerar menos código
+  - mas tudo depende do caso
+  - existem outras maneiras de fazer essa tipagem, como Types customizados
+  - vale a pena ver a documentação do TS para ver essas alternativas
+- any e unkown
+  - vimos um pouco sobre tipagem
+  - mas tem aqueles momentos que a gente não sabe (ou não quer se importar)
+  - com o tipo usado no código
+  - para isso a gente tem dois "tipos" em TypeScript
+  - começando com o any
+  - basicamente, o any funciona pra gente desabilitar toda a validação de tipagem realizada pelo TS
+  - é como se estivéssemos escrevendo com JS puro, mas com TS
+  - vamos voltar à nossa função de soma e fazer os parämetros serem do tipo any
+  - > alterar função soma para n1 e n2 serem any
+  - e quando consumimos essa função, qualquer tipo de valor pode ser passado
+  - > mostrar usando função passando string ao invés de número
+  - também podemos fazer qualquer operação nesses parämetros sem qualquer validação
+  - > usar um método qualquer em n1
+  - basicamente, desligamos a tipagem e delegamos os erros para acontecerem em tempo de execução
+  - isso é possível, mas altamente não recomendado
+  - primeiro, é importante buscarmos tipar as nossas variáveis e objetos
+  - assim o código fica muito mais seguro e de manutenção mais facilitada
+  - mas existem momentos, apesar de bem raros, que a gente realmente não sabe o tipo recebido
+  - para isso, temos o unknown
+  - ele é parecido com o any, permitindo a atribuição de qualquer valor a uma variável
+  - porém, ele nos obriga a verificar o tipo daquela variável antes de realizar alguma operação
+  - por exemplo, caso n1 e n2 fosse unknown, precisaríamos antes verificar se o tipo deles em runtime são number
+  - > alterar método soma para os parämetros serem unknown 
+  - > mostrar erro apontado na IDE
+  - > verificar com o typeof e mostrar dando certo
+  - como o VSCode é empoderado pelo TypeScript, o proprio editor mostra o tipo number quando colocamos o mouse sobre a variável
+  - caso tentarmos ainda fazer alguma operação fora do if, o mesmo erro anterior acontece
+  - > mostrar erro acontecendo fora do if
+  - isso acontece porque o ts usa o nosso if para acreditar que tipo dessas variáveis são number ali dentro do if
+  - pq fizemos uma garantia de tipagem em execução, não mais só em tempo de design
+  - com isso, nunca usem any, sempre prefiram unknown
+- surpresa
+  - bom, a proposta era passar esses conteúdos para vocës
+  - espero que tenha sido útil de alguma forma e eu tenha estreado com o pé direito
+  - quem sabe, futuramente falamos de outros temas mais complexos
+  - mas agora vou mostrar a surpresa
+  - todo mundo já deve ter percebido que estou usando o VSCode em modo zen
+  - então eu desabilito o modo zen e agora aparece tudo
+  - mas, o mai interessante disso tudo é que não estou usando o VSCode instalado na máquina
+  - mas sim diretamente do navegador!
+  - para isso, estou usando o gitpod, uma alternativa a outras soluções como o Github Codespaces e Stackblitz
+  - recomendo muito o gitpod, pq já me possibilitou desenvolver um aplicativo Flutter a partir do meu iPad!
+  - no mais, é isso pessoal. obrigado!
