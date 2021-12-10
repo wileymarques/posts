@@ -1,0 +1,44 @@
+# Outline
+
+- Introduction
+  - What are Micro Front-Ends?
+  - MFE benefits
+  - MFE downsides
+  - MFE strategies
+  - What we will build?
+- Structuring the workspace
+  - What is and why use Nx?
+  - Preparing the environment
+  - Creating a new Nx workspace
+- Container app
+  - Adding a VueJS app to the workspace
+  - Structuring the container app
+- Micro Front-End module
+  - What are Custom Elements?
+  - Why use Angular Elements?
+  - Creating a Custom Element without Angular
+  - Adding an Angular app to the workspace
+  - Converting the Angular app to Angular Element
+  - Structuring the Angular Element project
+- APIs
+  - Adding an API project to the workspace
+  - Consuming the API from the container app
+  - Using HttpClient on MFE module
+- Styling
+  - Styling the container app
+  - Styling the Angular Element
+  - Isolating Angular Element using Shadow DOM
+  - CSS Variables
+- Communication
+  - URL parameters
+  - HTML attributes
+  - Custom Events
+  - Channel Messaging
+- Packaging
+  - Packaging the host app
+  - Packaging the Angular Element
+  - Packaging the Angular Element as a single bundle
+- Conclusion
+  - Alternatives to Angular Elements
+  - Should you build a MFE architecture?
+    - good for migrations from old technologies
