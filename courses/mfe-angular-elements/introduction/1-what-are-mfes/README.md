@@ -1,6 +1,6 @@
 ## What are Micro Front-Ends?
 
-### Introduction
+## Introduction
 
 Micro Front-ends, despise the fancy name isn't something particularly new. It's, as most of the innovations, a group of techniques that tries to solve a problem.
 
@@ -8,7 +8,7 @@ The "problem" that is trying to be solved here is the ability to build scalable 
 
 **Micro Front-Ends** are very similar to *Micro Services* architecture. A lot of the concepts are shared. Also some of its *challenges* and *benefits*.
 
-### Evolution
+## Evolution
 
 But first, let's see how we got here. Because like everything in development, things start simple and then get more complex. It happens because we are constantly trying to solve the problems we face daily.
 
@@ -31,7 +31,7 @@ As the back-end layer got more complex, we started to break it into more managea
 
 ![Back-end layer broken up into Micro Services](assets/back-micro-services.png)
 
-### Micro Front-Ends architecture
+## Micro Front-Ends architecture
 
 And then we have the topic of this course. When the front-end layer also got more complex and had to be broken up into smaller pieces. Now called as **Micro Front-Ends**.
 
@@ -48,11 +48,11 @@ These called *container app* is just the app that will embed the MFE modules. Th
 
 ![Container app embeding some MFE modules](assets/container-embedding-mfe.png)
 
-### Conclusion
+## Conclusion
 
 As now we saw what is a Micro Front-End on the next topic we are going to see some of it's benefits.
 
-### References
+## References
 
 If you want to see more information about MFE architecture, here are some great articles:
 
