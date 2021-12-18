@@ -1,60 +1,53 @@
-## What are Micro Front-Ends?
+In this lesson, you are going to see what is Micro Front-End architecture and the reason behind it.
 
 ## Introduction
 
-Micro Front-ends, despise the fancy name isn't something particularly new. It's, as most of the innovations, a group of techniques that tries to solve a problem.
+Micro Front-Ends, despite the fancy name, isn't something particularly new. As with most of the innovations, it's just a group of techniques that tries to solve a problem.
 
-The "problem" that is trying to be solved here is the ability to build scalable apps. But not simple apps, we are here dealing with large and complex apps. Which may have different teams working on it.
+The problem here is building scalable apps with scalable teams. Not simple apps, but large and complex maintained by multiple teams.
 
-**Micro Front-Ends** are very similar to *Micro Services* architecture. A lot of the concepts are shared. Also some of its *challenges* and *benefits*.
+**Micro Front-Ends** is very similar to Micro Services architecture. A lot of the concepts, challenges, and benefits are shared.
 
 ## Evolution
 
-But first, let's see how we got here. Because like everything in development, things start simple and then get more complex. It happens because we are constantly trying to solve the problems we face daily.
+But first, it's interesting to understand the reason behind it. Like everything in development, things started simple and then get more complex. The software architecture evolves based on the problems we face daily.
 
-Maybe oversimplifying, we can divide the evolution of web apps architecture regarding separation of code into three "phases":
+Maybe oversimplifying, the evolution of web apps architecture regarding separation of code can be divided into four phases:
 
 1. Monolith with back and front together
 2. Separation from back and front
 3. Back Micro Services, front Monolithic
 4. Micro Front-Ends
 
-The first phase was when the code that's executed on the server (AKA back-end) resides on the same repository that also resides the code executed on the client (AKA front-end). This is now called **Monolithic architecture**.
+The first phase was when the code executed on the server (AKA back-end) resides on the same repository that also lives the code executed on the client (AKA front-end). This kind of architecture is called **Monolithic Architecture**.
 
-![Monolithic architecture](assets/monolithic-architecture.png)
+<!-- ![Monolithic architecture](assets/monolithic-architecture.png) -->
+![Monolithic architecture](/api/collection/6586453712175104/5197349072142336/page/4610960358113280/image/6046297215205376?page_type=collection_lesson)
 
-Then we started to separate these two "layers" into back and front-end. Creating two *monolithic* layers.
+Then we broke these two layers into back and front-end, creating two monolithic layers.
 
-![Back and front broken up in two layers](assets/back-front-layers-separation.png)
+<!-- ![Back and front broken up in two layers](assets/back-front-layers-separation.png) -->
+![Back and front broken up in two layers](/api/collection/6586453712175104/5197349072142336/page/4610960358113280/image/4947759823585280?page_type=collection_lesson)
 
-As the back-end layer got more complex, we started to break it into more manageable pieces. Called **Micro Services**.
+As the back-end layer got more complex we started to break it into more manageable pieces. Which is called **Micro Services**.
 
-![Back-end layer broken up into Micro Services](assets/back-micro-services.png)
+<!-- ![Back-end layer broken up into Micro Services](assets/back-micro-services.png) -->
+![Back-end layer broken up into Micro Services](/api/collection/6586453712175104/5197349072142336/page/4610960358113280/image/5419335941619712?page_type=collection_lesson)
 
-## Micro Front-Ends architecture
+## Micro Front-Ends Architecture
 
-And then we have the topic of this course. When the front-end layer also got more complex and had to be broken up into smaller pieces. Now called as **Micro Front-Ends**.
+And then we have the topic of this course. The front-end layer also got more complex and had to be broken up into smaller pieces. Bringing us to the subject of this course: **Micro Front-Ends**.
 
-![Front-end layer broken into Micro Front-Ends](assets/micro-front-end-layer.png)
+<!-- ![Front-end layer broken into Micro Front-Ends](assets/micro-front-end-layer.png) -->
+![Front-end layer broken into Micro Front-Ends](/api/collection/6586453712175104/5197349072142336/page/4610960358113280/image/5840135832207360?page_type=collection_lesson)
 
-Simply put, each *MFE* is a module that *usually* represents a *Business Feature*. They are decoupled from the *container* app and can be managed by an exclusive development team.
+Simply put, each MFE is a module that usually represents a Business Feature. They are decoupled from the container app and managed by an independent development team.
 
-- container app
-- usually doesn't work "alone"
-- needs the container app
-- some communication between the container and module
+An MFE module usually doesn't work on its own, depending to be embedded in an app. This app can be called Container and has the responsibility of managing all the MFE modules in it.
 
-These called *container app* is just the app that will embed the MFE modules. The diagram below can illustrate that:
+<!-- ![Container app embedding some MFE modules](assets/container-embedding-mfe.png) -->
+![Container app embedding some MFE modules](/api/collection/6586453712175104/5197349072142336/page/4610960358113280/image/5204064748437504?page_type=collection_lesson)
 
-![Container app embeding some MFE modules](assets/container-embedding-mfe.png)
+But differently than a common SPA application, everything is more complex. And some things have usually to be built in a slightly different way than in more simple apps.
 
-## Conclusion
-
-As now we saw what is a Micro Front-End on the next topic we are going to see some of it's benefits.
-
-## References
-
-If you want to see more information about MFE architecture, here are some great articles:
-
-- https://micro-frontends.org/
-- https://martinfowler.com/articles/micro-frontends.html
+And this is what you are going to see in this course.
