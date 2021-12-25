@@ -1,3 +1,7 @@
+<!-- What is Micro Front-Ends? -->
+
+## Summary
+
 In this lesson, you are going to see what is Micro Front-End architecture and the reason behind it.
 
 ## Introduction
@@ -48,6 +52,4 @@ An MFE module usually doesn't work on its own, depending to be embedded in an ap
 <!-- ![Container app embedding some MFE modules](assets/container-embedding-mfe.png) -->
 ![Container app embedding some MFE modules](/api/collection/6586453712175104/5197349072142336/page/4610960358113280/image/5204064748437504?page_type=collection_lesson)
 
-But differently than a common SPA application, everything is more complex. And some things have usually to be built in a slightly different way than in more simple apps.
-
-And this is what you are going to see in this course.
+But differently than a common SPA application, everything is more complex. And some things have usually to be built in a slightly different way than in simpler apps.
