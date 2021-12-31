@@ -1,3 +1,9 @@
+<!-- MFE Downsides -->
+
+## Summary
+
+In this lesson, you will see some disadvantages of an MFE architecture to minimize the risks of choosing it.
+
 ## Complexity
 
 Starting with maybe the most important aspect of software development. Complexity is something we tend to introduce without even noticing it. When we find it's too complex, it's too late to change.
