@@ -1,10 +1,7 @@
-<!-- What We Will Build? -->
-
-# Summary
-
-You will see what we will build together.
-
-# Content
+---
+title: What We Will Build?
+summary: You will see what we will build together.
+---
 
 As the objective of this course is about structuring an MFE architecture, the app we will build together won't be very complex. Instead, it will be built with some features to illustrate how to do some communication between the container and an MFE module.
 

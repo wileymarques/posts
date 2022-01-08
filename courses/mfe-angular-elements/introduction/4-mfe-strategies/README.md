@@ -26,8 +26,8 @@ An example of a `package.json` showing that would be:
 
 As the composition occurs during compilation, the representation of that would be:
 
-<!-- ![Build time integration example](assets/build-time-integration.png) -->
-![Build time integration example](/api/collection/6586453712175104/5197349072142336/page/4738961238392832/image/5062376730132480?page_type=collection_lesson)
+<!-- ![Build time integration example](assets/build-time-integration.drawio.svg) -->
+![Build time integration example](/api/collection/6586453712175104/5197349072142336/page/4738961238392832/image/6322496864780288?page_type=collection_lesson)
 
 This is maybe the simplest solution, but the least flexible because the entire needs to be deployed as a monolithic package.
 
