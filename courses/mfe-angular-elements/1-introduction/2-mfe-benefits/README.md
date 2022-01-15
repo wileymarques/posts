@@ -11,14 +11,15 @@ One thing commonly cited as an advantage in Micro Services is the freedom of cho
 
 When creating a monolithic app, the framework used to develop it has to be the same in every module. For example, if the app is written in Angular, you have to stick with it in all the app.
 
-<!-- TODO: Fix images -->
-<!-- ![Monolithic app using Angular](assets/monolithic-app-angular.png) -->
-![Monolithic app using Angular](/api/collection/6586453712175104/5197349072142336/page/5133571978690560/image/4532677121671168?page_type=collection_lesson)
+<!-- ![Monolithic app using Angular](assets/monolithic-app-angular.svg) -->
+
+![Monolithic app using Angular](/api/collection/6586453712175104/5197349072142336/page/5133571978690560/image/5181615776464896?page_type=collection_lesson)
 
 A Micro Front-Ends architecture brings the freedom to choose any framework in every module.
 
-<!-- ![MFE app using Angular as container and VueJS and React on business modules](assets/mfe-app-angular-vue-react.png) -->
-![MFE app using Angular as container and VueJS and React on business modules](/api/collection/6586453712175104/5197349072142336/page/5133571978690560/image/6658240867205120?page_type=collection_lesson)
+<!-- ![MFE app using Angular as container and VueJS and React on business modules](assets/mfe-app-angular-vue-react.svg) -->
+
+![MFE app using Angular as container and VueJS and React on business modules](/api/collection/6586453712175104/5197349072142336/page/5133571978690560/image/4874573274677248?page_type=collection_lesson)
 
 ## Isolation
 
@@ -40,8 +41,9 @@ The independence of deployment, combined with the isolation cited before, brings
 
 It's also easier to ship features. Because the team responsible for an MFE module can try new things with less impact on the rest of the application.
 
-<!-- ![Differences between monolithic and MFE regarding deploy](assets/monolithic-mfe-deploy-diffs.png) -->
-![Differences between monolithic and MFE regarding deploy](/api/collection/6586453712175104/5197349072142336/page/5133571978690560/image/5196115082739712?page_type=collection_lesson)
+<!-- ![Differences between monolithic and MFE regarding deploy](assets/monolithic-mfe-deploy-diffs.svg) -->
+
+![Differences between monolithic and MFE regarding deploy](/api/collection/6586453712175104/5197349072142336/page/5133571978690560/image/6009481003008000?page_type=collection_lesson)
 
 ## Scalability
 
@@ -57,8 +59,9 @@ This way, it's possible to have a separate team responsible for each MFE module.
 
 It can lead to the development of multidisciplinary teams, with less needy for separation between front and back-end teams. This aspect helps to scale the development process.
 
-<!-- ![Multiple teams working on the same app](assets/multiple-teams-same-app.png) -->
-![Multiple teams working on the same app](/api/collection/6586453712175104/5197349072142336/page/5133571978690560/image/4990478893711360?page_type=collection_lesson)
+<!-- ![Multiple teams working on the same app](assets/multiple-teams-same-app.svg) -->
+
+![Multiple teams working on the same app](/api/collection/6586453712175104/5197349072142336/page/5133571978690560/image/4931183091122176?page_type=collection_lesson)
 
 ## Reusability
 

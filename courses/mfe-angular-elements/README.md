@@ -58,5 +58,3 @@ In this course, you will see what is Micro Front-Ends, some strategies for this 
   - Should you build a MFE architecture?
     - good for migrations from old technologies
   - Appendix
-
-<!-- TODO: add borders to the diagrams with white background in lesson 1,2,4,6 -->
