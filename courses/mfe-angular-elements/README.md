@@ -1,4 +1,19 @@
-# Outline
+# Micro Front-ends With Angular Elements
+
+## Summary
+
+Micro Front-Ends (or MFE) is a hot topic at the moment. In this course, you will use one of the simplest solutions to this architecture, Angular Elements.
+
+In this course, you will see what is Micro Front-Ends, some strategies for this kind of architecture, and how to implement it using Angular Elements.
+
+## Takeaway Skills
+
+- What is Angular
+- HTML
+- CSS
+- JavaScript
+
+## Lessons
 
 - Introduction
   - What are Micro Front-Ends?
