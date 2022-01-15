@@ -21,10 +21,10 @@ To achieve that, run the following command in the terminal:
 npx create-nx-workspace mfe-angular-elements-educative --preset=empty --nx-cloud=false
 ```
 
-> To explain it a bit. `npx` is a Node tool used to run a Node binary without installing it. `create-nx-workspace` is the binary we want to execute, which is responsible for the creation of the workspace. `mfe-angular-elements-educative` is the name of the workspace. `--preset=empty` tells Nx to create an empty workspace. And `--nx-cloud=false` says that we don't want to use [Nx Cloud](https://nx.app).
-> 
+> To explain it a bit. `npx` is a Node tool used to run a Node binary without installing it. `create-nx-workspace` is the binary we want to execute, which is responsible for the creation of the workspace. `mfe-angular-elements-educative` is the name of the workspace. `--preset=empty` tells Nx to create an empty workspace. And `--nx-cloud=false` says that we don't want to use Nx Cloud.
+>
 > Don't forget to point your terminal to the directory that you want to create the workspace.
-> 
+>
 > In Linux it would be: `cd directory-name`
 
 This is the result of the command:
@@ -53,8 +53,6 @@ When opening the workspace on the IDE, you can see this folder structure:
 <!-- ![Workspace folder structure shown on VSCode](assets/vscode-workspace-folder-structure.png) -->
 
 ![Workspace folder structure shown on VSCode](/api/collection/6586453712175104/5197349072142336/page/5956347840954368/image/5343852092719104?page_type=collection_lesson)
-
-> If you want to know more about this structure, follow this link to go to the official Nx doc: <https://nx.dev/l/a/getting-started/nx-setup#folder-structure>.
 
 The most important folder for this course is the `apps` folder. You can see it's empty now, but it is where we will create the apps.
 

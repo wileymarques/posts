@@ -1,5 +1,5 @@
 ---
-title: Preparing the Environment
+title: Preparing The Environment
 summary: In this lesson, you are going to prepare your dev environment.
 ---
 
@@ -37,9 +37,7 @@ Another good way to test Node is running a rather cool command: `npx cowsay Hell
 
 After a successful installation of Node, it's time to install one of the most important pieces of this course: Nx.
 
-As said before, Nx has a lot of advantages and will help us a lot during our journey. Its documentation can be found at: <https://nx.dev>.
-
-It's not mandatory, but a way to get Nx is simply installing it globally using `npm`. So, open up your terminal, type `npm install -g nx`, and hit enter.
+As said before, Nx has a lot of advantages and will help us a lot during our journey. It's not mandatory, but a way to get Nx is simply installing it globally using `npm`. So, open up your terminal, type `npm install -g nx`, and hit enter.
 
 <!-- ![Installing Nx CLI as a global dependency on npm](assets/npm-install-nx.png) -->
 
@@ -51,9 +49,9 @@ Integrated Development Environment, or IDE, is a tool that can be used to code a
 
 Sometimes an IDE is too much for what you are trying to accomplish. For that, you can use a more simple Code Editor. The differences between an IDE and a Code Editor may not be so clear but usually, IDEs bring more functionalities like debugging and deployment.
 
-For Front-End development, the most popular Code Editors (or IDEs) are: [Visual Studio Code](https://code.visualstudio.com), [WebStorm](https://www.jetbrains.com/webstorm/) and [Sublime Text](https://www.sublimetext.com). Visual Studio Code, or just VSCode, is by far the most popular and will be the one used in this course.
+For Front-End development, the most popular Code Editors (or IDEs) are Visual Studio Code, WebStorm, and Sublime Text. Visual Studio Code, or just VSCode, is by far the most popular and will be the one used in this course.
 
-The installation of VSCode is very simple and the instructions can be found on its official website: <https://code.visualstudio.com>. Where you find the following:
+The installation of VSCode is very simple and the instructions can be found on its official website (referred on the Appendix lesson). Where you find the following:
 
 <!-- ![Visual Studio Code website](assets/vscode-website.png) -->
 
@@ -63,11 +61,6 @@ There are two options: Stable and Insiders. If you like to try new things and ac
 
 ## VSCode Extensions
 
-VSCode is an extensible Code Editor. One way to extend its functionalities is by installing extensions, which are officially supported. There are a lot of extensions that can be found on the VSCode extensions bar or the marketplace: <https://marketplace.visualstudio.com/vscode>.
+VSCode is an extensible Code Editor. One way to extend its functionalities is by installing extensions, which are officially supported. There are a lot of extensions that can be found on the VSCode extensions bar or the marketplace (see Appendix).
 
-For this course, two extensions aren't mandatory but may be helpful. The first extension will operate in the background, providing you feedbacks while you code. The second is not necessary, but can be used in the case where you don't want to open the terminal to do some tasks like building the app.
-
-Both extensions can be respectively found at:
-
-- [Angular Language Service](https://marketplace.visualstudio.com/items?itemName=Angular.ng-template)
-- [Nx Console](https://marketplace.visualstudio.com/items?itemName=nrwl.angular-console)
+For this course, two extensions aren't mandatory but may be helpful. **Angular Language Service** will operate in the background, providing you feedbacks while you code. **Nx Console** is not necessary, but can be used in the case where you don't want to open the terminal to do some tasks like building the app.

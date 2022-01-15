@@ -1,8 +1,7 @@
-<!-- MFE Downsides -->
-
-## Summary
-
-In this lesson, you will see some disadvantages of an MFE architecture to minimize the risks of choosing it.
+---
+title: MFE Downsides
+summary: In this lesson, you will see some disadvantages of an MFE architecture to minimize the risks of choosing it.
+---
 
 ## Complexity
 

@@ -19,8 +19,8 @@ These are example of the pages that we will build:
 
 The communication involved in this app will be used to:
 
-* Change the accent color when the user enters the Contact Page
-* Show in the container a title provided by the MFE module
+- Change the accent color when the user enters the Contact Page
+- Show in the container a title provided by the MFE module
 
 The contact list presented by the MFE module will be fetched from an API that we'll also build.
 

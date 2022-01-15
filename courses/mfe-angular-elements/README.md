@@ -42,3 +42,6 @@
   - Alternatives to Angular Elements
   - Should you build a MFE architecture?
     - good for migrations from old technologies
+  - Appendix
+
+<!-- TODO: add borders to the diagrams with white background in lesson 1,2,4,6 -->

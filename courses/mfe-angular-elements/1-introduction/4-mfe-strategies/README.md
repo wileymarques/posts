@@ -1,8 +1,11 @@
-There are some ways to create an MFE architecture, in this lesson you will see some of them.
+---
+title: MFE Strategies
+summary: There are some ways to create an MFE architecture, in this lesson you will see some of them.
+---
 
 The main aspect of an MFE architecture is how the modules will be integrated. Let's see the most common approaches:
 
-## Build-time integration
+## Build-time Integration
 
 Although some people don't consider this approach a real MFE architecture, a build time integration can be a way to create composable apps.
 
@@ -27,11 +30,12 @@ An example of a `package.json` showing that would be:
 As the composition occurs during compilation, the representation of that would be:
 
 <!-- ![Build time integration example](assets/build-time-integration.drawio.svg) -->
+
 ![Build time integration example](/api/collection/6586453712175104/5197349072142336/page/4738961238392832/image/6322496864780288?page_type=collection_lesson)
 
 This is maybe the simplest solution, but the least flexible because the entire needs to be deployed as a monolithic package.
 
-## Server-side template composition
+## Server-side Template Composition
 
 The approach here isn't new to web development, as it's simple as compose the template during server-side execution. An HTML representation of that would be:
 
@@ -67,7 +71,7 @@ Now we come to may the most used solution nowadays. Also not a new thing in web 
 
 The problem here is in the solution itself: iFrame. You may know the problems that come with it. It can be difficult to style, is heavy on some browsers, and send too many resources to the client-side.
 
-## Run-time integration
+## Run-time Integration
 
 When MFE architectures got more popular, some people tried to solve them in different ways. One of them was integration using pure JavaScript. It's not so simple to explain as the other solutions presented here, but it's similar to what you saw on server-side integration.
 

@@ -1,5 +1,5 @@
 ---
-title: What is and Why Use Nx?
+title: What Is And Why Use Nx?
 summary: In this lesson, you will know the benefits of using Nx and how it compares to the Angular CLI.
 ---
 
@@ -19,7 +19,7 @@ Different than the Angular CLI, Nx can handle almost any technology available fo
 
 With its built-in monorepo support, Nx will help us create the project we'll build together in this course. Since we'll deal not only with Angular but some other technologies, a tool like Nx is especially crucial. Using the Nx CLI we will be able to create, run and build all the projects in this course.
 
-## Comparing to the Angular CLI
+## Comparing To The Angular CLI
 
 If you are used to the Angular CLI you will feel at home, because most of the commands are similar. For example, if you want to run an Angular app locally using its CLI you would run `ng serve`:
 
@@ -33,7 +33,7 @@ While using Nx you would run `nx serve`:
 
 ![Example of running `nx serve`](/api/collection/6586453712175104/5197349072142336/page/5286615840194560/image/6271529058304000?page_type=collection_lesson)
 
-As said before, Nx also works with React and the output of the same `nx serve` command would be:
+As said before, Nx also works with React, and the output of the same `nx serve` command would be:
 
 <!-- ![Example of running `nx serve` on a React app](assets/nx-serve-react.png) -->
 
@@ -41,7 +41,7 @@ As said before, Nx also works with React and the output of the same `nx serve` c
 
 The other common commands used on the Angular CLI are also available on Nx, like: `test`, `lint`, and `build`.
 
-## Going further
+## Going Further
 
 One advantage Nx has over the Angular CLI is the capability of running multiple commands at once. On a regular Angular project, you would have to create `npm` scripts or use a third-party library like  `concurrently`.
 
@@ -51,4 +51,4 @@ Nx has the `run-many` command that does all the hard work for you. Imagine you h
 
 ![Example of running `nx run-many`](/api/collection/6586453712175104/5197349072142336/page/5286615840194560/image/6170483577323520?page_type=collection_lesson)
 
-Although Nx is a great tool it isn't the main object of this course, but it's important to know what you have at hand. So if you want to see more of its capabilities, go to their website: <https://nx.dev>.
+Although Nx is a great tool it isn't the main object of this course, but it's important to know what you have at hand. So if you want to see more of its capabilities, you can check the official website on the Appendix lesson of this course.

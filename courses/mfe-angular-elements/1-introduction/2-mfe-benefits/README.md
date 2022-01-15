@@ -1,6 +1,7 @@
-<!-- # MFE Benefits -->
-
-In this lesson, you will see some benefits of MFE architecture.
+---
+title: MFE Benefits
+summary: In this lesson, you will see some benefits of MFE architecture.
+---
 
 Most of the benefits of Micro Services also apply to Micro Front-Ends. Also, they both are great when combined. So, let's see some of them.
 
@@ -10,6 +11,7 @@ One thing commonly cited as an advantage in Micro Services is the freedom of cho
 
 When creating a monolithic app, the framework used to develop it has to be the same in every module. For example, if the app is written in Angular, you have to stick with it in all the app.
 
+<!-- TODO: Fix images -->
 <!-- ![Monolithic app using Angular](assets/monolithic-app-angular.png) -->
 ![Monolithic app using Angular](/api/collection/6586453712175104/5197349072142336/page/5133571978690560/image/4532677121671168?page_type=collection_lesson)
 
