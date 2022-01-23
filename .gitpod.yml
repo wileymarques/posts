@@ -1,0 +1,9 @@
+
+vscode:
+  extensions:
+    - streetsidesoftware.code-spell-checker
+    - usernamehw.errorlens
+    - eamodio.gitlens
+    - davidanson.vscode-markdownlint
+    - gruntfuggly.todo-tree
+    - hediet.vscode-drawio

@@ -9,9 +9,7 @@ Both of these frameworks run on top of Node, which will be required on the dev e
 
 ## Installing NodeJS
 
-So let's start installing NodeJS, which can be downloaded from its official page: <https://nodejs.org/>.
-
-But on that page, there's an indication of two NodeJS versions: LTS and Current.
+So let's start installing NodeJS, which can be downloaded from its official page But on that page, there's an indication of two NodeJS versions: LTS and Current.
 
 <!-- ![NodeJS home page showing two versions: LTS and Current](assets/node-home-page.png) -->
 

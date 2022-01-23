@@ -3,7 +3,13 @@ title: Appendix
 summary: Summary
 ---
 
+## Node
+
+NodeJS: <https://nodejs.org/>
+
 ## Nx
+
+Nx team (<https://nrwl.io>)
 
 <https://nx.dev>
 

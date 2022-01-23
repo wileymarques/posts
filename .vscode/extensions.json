@@ -4,6 +4,7 @@
     "usernamehw.errorlens",
     "eamodio.gitlens",
     "davidanson.vscode-markdownlint",
-    "gruntfuggly.todo-tree"
+    "gruntfuggly.todo-tree",
+    "hediet.vscode-drawio"
   ]
 }

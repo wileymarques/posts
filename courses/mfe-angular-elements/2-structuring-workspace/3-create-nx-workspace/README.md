@@ -11,7 +11,7 @@ Each application or library inside a workspace is called a project. During this 
 
 ## Creating a Workspace
 
-Nx has a ton of options for workspace creations. It has native plugins developed by the Nx team (<https://nrwl.io>), but there are many community plugins. All of them give us flexibility when creating our apps.
+Nx has a ton of options for workspace creations. It has native plugins developed by the Nx team, but there are many community plugins. All of them give us flexibility when creating our apps.
 
 By now, we will only create the workspace without any apps in it. Nx creates an app using a default configuration that you can change during the process. But we will create an empty workspace because the apps will be created during the course.
 
@@ -54,6 +54,4 @@ When opening the workspace on the IDE, you can see this folder structure:
 
 ![Workspace folder structure shown on VSCode](/api/collection/6586453712175104/5197349072142336/page/5956347840954368/image/5343852092719104?page_type=collection_lesson)
 
-The most important folder for this course is the `apps` folder. You can see it's empty now, but it is where we will create the apps.
-
-With the workspace now created, we can start creating the apps.
+The most important folder for this course is the `apps` folder. Which now is empty, but we can start filling it with apps.

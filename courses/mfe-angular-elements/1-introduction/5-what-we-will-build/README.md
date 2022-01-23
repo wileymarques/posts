@@ -7,7 +7,7 @@ As the objective of this course is about structuring an MFE architecture, the ap
 
 This app will be divided in three main areas: Home Page, Profile Page, and Contacts Page. The Home and Profile Page will be part of the container app. The Contacts Page will be our MFE module, which will also have a nested route to edit a Contact.
 
-These are example of the pages that we will build:
+These are some examples of the pages we will build:
 
 ![Home Page](assets/home.png)
 

@@ -8,10 +8,11 @@ In this course, you will see what is Micro Front-Ends, some strategies for this 
 
 ## Takeaway Skills
 
-- What is Angular
-- HTML
-- CSS
-- JavaScript
+- What are Micro Front-Ends, its benefits and drawbacks
+- How to use Nx as a workspace tool
+- What are Custom Elements and how to create them
+- How to implement a MFE architecture using Custom Elements
+- Leveraging DOM APIs to build decoupled modules
 
 ## Lessons
 

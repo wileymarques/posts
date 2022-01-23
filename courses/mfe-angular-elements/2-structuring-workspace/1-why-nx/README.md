@@ -45,7 +45,7 @@ The other common commands used on the Angular CLI are also available on Nx, like
 
 One advantage Nx has over the Angular CLI is the capability of running multiple commands at once. On a regular Angular project, you would have to create `npm` scripts or use a third-party library like  `concurrently`.
 
-Nx has the `run-many` command that does all the hard work for you. Imagine you have two projects on a workspace and want to serve them, you could simply run the command `nx run-many --target=serve --all` and let Nx do its work, like below: 
+Nx has the `run-many` command that does all the hard work for you. Imagine you have two projects on a workspace and want to serve them, you could simply run the command `nx run-many --target=serve --all` and let Nx do its work, like below:
 
 <!-- ![Example of running `nx run-many`](assets/nx-run-many.png) -->
 
