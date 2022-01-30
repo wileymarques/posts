@@ -24,36 +24,26 @@ Maybe oversimplifying, the evolution of web apps architecture regarding separati
 
 The first phase was when the code executed on the server (AKA back-end) resides on the same repository that also lives the code executed on the client (AKA front-end). This kind of architecture is called **Monolithic Architecture**.
 
-<!-- ![Monolithic architecture](assets/monolithic-architecture.svg) -->
-
-![Monolithic architecture](/api/collection/6586453712175104/5197349072142336/page/4610960358113280/image/5840973384384512?page_type=collection_lesson)
+![Monolithic architecture](assets/monolithic-architecture.svg)
 
 Then we broke these two layers into back and front-end, creating two monolithic layers.
 
-<!-- ![Back and front broken up in two layers](assets/back-front-layers-separation.svg) -->
-
-![Back and front broken up in two layers](/api/collection/6586453712175104/5197349072142336/page/4610960358113280/image/5545399439327232?page_type=collection_lesson)
+![Back and front broken up in two layers](assets/back-front-layers-separation.svg)
 
 As the back-end layer got more complex we started to break it into more manageable pieces. Which is called **Micro Services**.
 
-<!-- ![Back-end layer broken up into Micro Services](assets/back-micro-services.svg) -->
-
-![Back-end layer broken up into Micro Services](/api/collection/6586453712175104/5197349072142336/page/4610960358113280/image/6522601186263040?page_type=collection_lesson)
+![Back-end layer broken up into Micro Services](assets/back-micro-services.svg)
 
 ## Micro Front-Ends Architecture
 
 And then we have the topic of this course. The front-end layer also got more complex and had to be broken up into smaller pieces. Bringing us to the subject of this course: **Micro Front-Ends**.
 
-<!-- ![Front-end layer broken into Micro Front-Ends](assets/micro-front-end-layer.svg) -->
-
-![Front-end layer broken into Micro Front-Ends](/api/collection/6586453712175104/5197349072142336/page/4610960358113280/image/6382074302300160?page_type=collection_lesson)
+![Front-end layer broken into Micro Front-Ends](assets/micro-front-end-layer.svg)
 
 Simply put, each MFE is a module that usually represents a Business Feature. They are decoupled from the container app and managed by an independent development team.
 
 An MFE module usually doesn't work on its own, depending to be embedded in an app. This app can be called Container and has the responsibility of managing all the MFE modules in it.
 
-<!-- ![Container app embedding some MFE modules](assets/container-embedding-mfe.svg) -->
-
-![Container app embedding some MFE modules](/api/collection/6586453712175104/5197349072142336/page/4610960358113280/image/5692137131212800?page_type=collection_lesson)
+![Container app embedding some MFE modules](assets/container-embedding-mfe.svg)
 
 But differently than a common SPA application, everything is more complex. And some things have usually to be built in a slightly different way than in simpler apps.
