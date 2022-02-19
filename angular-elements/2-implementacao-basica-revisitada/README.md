@@ -1,26 +1,26 @@
 ---
-title: Angular Elements - Implementação Básica
-published: true
+title: Angular Elements - Implementação Básica - Revisitada
+published: false
 description: Implementação Básica de Angular Elements. Criando um Custom Element que contém interação com uma aplicação Angular comum.
-tags: angular, web-components, angular-elements, micro-front-en
+tags: angular, web-components, angular-elements, micro-front-ends, nx
 series: Angular Elements
 ---
 
-Após a [explicação do conceito envolvendo Angular Elements (incluindo referências)](https://dev.to/wilmarques/angular-elements-introducao-351n), vou demonstrar como implementar um componente simples.
+Após a [explicação do conceito envolvendo Angular Elements (incluindo referências)](https://dev.to/wilmarques/angular-elements-introducao-351n), vamos implementar um componente simples.
 
 ## O que será feito
 
-Utilizaremos a [Angular CLI](https://angular.io/cli/) para criar uma aplicação e convertê-la para Angular Elements.
+O Angular, por ser um framework, traz diversas capacidades incluídas no seu pacote. Uma delas é a [Angular CLI](https://angular.io/cli/), capaz de criar projetos, trechos de código e ter outras responsabilidades.
 
-Teremos como base o exemplo disponível no [tutorial do Angular, Tour of Heroes](https://angular.io/tutorial).
+Mas ainda assim usaremos uma alternativa à essa CLI, a [Nx](<https://nx.dev>). Por ter algumas vantagens interessantes sobre a Angular CLI. Além de também oferecer mais uma oportunidade de aprendizado.
 
-Porém, para simplificar o processo, nesse primeiro momento criaremos apenas a listagem e adição de heróis, não o dashboard.
+Com a Nx, criaremos um projeto Angular e convertê-lo para Angular Elements. Onde teremos como base o exemplo disponível no [tutorial do Angular, Tour of Heroes](https://angular.io/tutorial).
 
-Nesse exemplo, uma aplicação Angular comum terá a responsabilidade de inclusão dos heróis, enquanto um Angular Elements exibirá a listagem.
+Porém, para simplificar o processo, criaremos apenas a listagem e adição de heróis, não o dashboard. Nesse exemplo, uma aplicação Angular comum terá a responsabilidade de inclusão dos heróis, enquanto um Angular Elements exibirá a listagem.
 
 Ilustração do que será construído:
 
-![Ilustração da listagem de heróis](images/heroes-list-example.png)
+![Ilustração da listagem de heróis](assets/heroes-list-example.png)
 
 ## Configuração do ambiente
 
@@ -30,49 +30,78 @@ Antes de tudo, devemos ter um ambiente corretamente configurado para o processo 
 
 ### Node e NPM
 
-A versão 10 do Node é a atualmente recomendada, tanto pelo Angular quanto pela própria equipe do Node.
+A opção padrão para instalação do Node é utilizar o instalador oficial, disponível no site da própria ferramenta: <https://nodejs.org/>.
 
-Uma ótima opção para realizar a instalação é usar algum gerenciador, por exemplo [nvm](https://github.com/nvm-sh/nvm) ou [nvs](https://github.com/jasongin/nvs), porém o [site oficial](https://nodejs.org/) tem instruções para instalação em cada sistema operacional.
+É altamente recomendada a instalação de uma versão LTS (Long Time Support), por ser mais  estável. A versão *current* (ou atual) é quase como uma versão *beta*, onde novas funcionalidades são testadas e é esperado um feedback da comunidade para trazer maior estabilidade na próxima LTS.
 
-A vantagem em usar um gerenciador é a facilidade de atualização e possibilidade em se ter diferentes versões do Node em um mesmo equipamento.
+Mas ótima opção para realizar a instalação é usar algum gerenciador, por exemplo [NVM](https://github.com/nvm-sh/nvm) ou [NVS](https://github.com/jasongin/nvs). A vantagem em usar um gerenciador é a facilidade de atualização e possibilidade em se ter diferentes versões do Node em um mesmo equipamento.
 
-> O Node 8 não é mais recomendado, principalmente por estar chegando no [fim do seu ciclo de vida](https://nodejs.org/en/about/releases/).
-
-O [NPM](https://www.npmjs.com/) é instalado em conjunto com o Node, sendo 6 a [versão mais atual](https://github.com/npm/cli/releases).
-
-### Angular CLI
-
-Para instalar a Angular CLI, basta executar o seguinte comando na linha de comando:
+Utilizando o NVS, para instalar a versão LTS do Node basta executar os seguintes comando no terminal:
 
 ```bash
-npm install -g @angular/cli@^8
+nvs add lts
+nvs use lts
 ```
 
-Após a instalação, execute esse comando para verificar o correto funcionamento:
+E para verificar a instalação, pode-se executar um comando para a CLI do Node retornar a versão atualmente instalada. Como abaixo:
+
+![Running `node -v` on Terminal](assets/node-v.png)
+
+### Nx CLI
+
+Após instalar corretamente o Node, podemos instalar a Nx CLI. Bastando executar o seguinte no terminal:
 
 ```bash
-ng version
+npm install -g nx
 ```
 
-Resultado do comando:
+Tendo um resultado semelhante ao abaixo:
 
-![Resultado do comando ng version](images/ng-version-example.png)
+![Installing Nx CLI as a global dependency on npm](assets/npm-install-nx.png)
 
 ## Criação do projeto
 
 ### Workspace
 
-A CLI do Angular possibilita a criação de diversos projetos dentro de um mesmo [workspace](https://angular.io/guide/glossary#workspace), para simplificar a criação de [monorepos](https://www.atlassian.com/git/tutorials/monorepos).
+Assim como a Angular CLI, a Nx possibilita a criação de diversos projetos dentro de uma mesma estrutura, chamada de *workspace*.
 
-Para usufruirmos dessa funcionalidade, antes iniciaremos um workspace limpo (sem projetos) utilizando o comando [`ng new`](https://angular.io/cli/new):
+Para a criação desses workspaces, a Nx possui algumas opções. Por padrão, uma aplicação simples é criada com algumas configurações iniciais. Mas aqui criaremos um repositório vazio, porque vamos adicionando os projetos individualmente e com maior controle desse processo.
+
+A fim de criar um workspace vazio, usaremos o comando `create-nx-workspace` com alguns parâmetros:
 
 ```bash
-ng new ng-elements --createApplication=false
+npx create-nx-workspace ng-elements --preset=empty --nx-cloud
+```
+
+> No comando acima, além de estarmos definindo o nome do workspace como `ng-elements`, podemos ver outros dois parâmetros: `preset` e `nx-cloud`.
+> 
+> No primeiro deles estamos definindo o valor `empty`, a fim de indicar à Nx CLI que queremos um workspace vazio.
+> 
+> No segundo parâmetro, estamos ativando a utilização da [Nx Cloud](https://nx.app).
+
+A execução do comando tem como resultado a criação de um diretório com o mesmo nome atribuído ao workspace. Onde encontramos uma estrutura como a seguinte:
+
+![Estrutura do diretório criado a partir do VSCode](assets/vscode-workspace-folder-structure.png)
+
+Um dos arquivos mais importantes em um workspace gerado com a Nx é o `workspace.json`. Tendo uma estrutura bastante similar ao já `angular.json` gerado pela Angular CLI, nele é possível encontrar todos os projetos presentes no workspace. No momento, ao abrir esse arquivo nos deparamos com uma estrutura vazia, justamente porque pedimos um workspace vazio:
+
+```json
+{
+  "version": 2,
+  "projects": {}
+}
 ```
 
 ### Aplicação inicial
 
-Após o workspace ser criado, entraremos nele e adicionaremos uma aplicação simples com o seguinte:
+Após o workspace ser criado, podemos começar a criar os projetos.
+
+Começaremos então criando a aplicação inicial, chamada de `heroes-creator` 
+
+> TODO: Criar aplicação container com a Nx
+> Precisa instalar o plugin para Angular e depois rodar o comando
+  
+    entraremos nele e adicionaremos uma aplicação simples com o seguinte:
 
 ```bash
 cd ng-elements
