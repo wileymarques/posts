@@ -12,9 +12,7 @@ Após a [explicação do conceito envolvendo Angular Elements (incluindo referê
 
 O Angular, por ser um framework, traz diversas capacidades incluídas no seu pacote. Uma delas é a [Angular CLI](https://angular.io/cli/), capaz de criar projetos, trechos de código e ter outras responsabilidades.
 
-Mas ainda assim usaremos uma alternativa à essa CLI, a [Nx](<https://nx.dev>). Por ter algumas vantagens interessantes sobre a Angular CLI. Além de também oferecer mais uma oportunidade de aprendizado.
-
-Com a Nx, criaremos um projeto Angular e convertê-lo para Angular Elements. Onde teremos como base o exemplo disponível no [tutorial do Angular, Tour of Heroes](https://angular.io/tutorial).
+Com a Angular CLI, criaremos um projeto e o converteremos para Angular Elements. Onde teremos como base o exemplo disponível no [tutorial do Angular, Tour of Heroes](https://angular.io/tutorial).
 
 Porém, para simplificar o processo, criaremos apenas a listagem e adição de heróis, não o dashboard. Nesse exemplo, uma aplicação Angular comum terá a responsabilidade de inclusão dos heróis, enquanto um Angular Elements exibirá a listagem.
 
@@ -47,67 +45,96 @@ E para verificar a instalação, pode-se executar um comando para a CLI do Node 
 
 ![Running `node -v` on Terminal](assets/node-v.png)
 
-### Nx CLI
+### Angular CLI
 
-Após instalar corretamente o Node, podemos instalar a Nx CLI. Bastando executar o seguinte no terminal:
+Após instalar corretamente o Node, podemos instalar a Angular CLI. Bastando executar o seguinte no terminal:
 
 ```bash
-npm install -g nx
+npm install -g @angular/cli
 ```
 
 Tendo um resultado semelhante ao abaixo:
 
-![Installing Nx CLI as a global dependency on npm](assets/npm-install-nx.png)
+![Installing Angular CLI as a global dependency on npm](assets/npm-install-angular-cli.png)
 
 ## Criação do projeto
 
 ### Workspace
 
-Assim como a Angular CLI, a Nx possibilita a criação de diversos projetos dentro de uma mesma estrutura, chamada de *workspace*.
+A Angular CLI possibilita a criação de diversos projetos dentro de uma mesma estrutura, chamada de *workspace*.
 
-Para a criação desses workspaces, a Nx possui algumas opções. Por padrão, uma aplicação simples é criada com algumas configurações iniciais. Mas aqui criaremos um repositório vazio, porque vamos adicionando os projetos individualmente e com maior controle desse processo.
+Para a criação desses workspaces, algumas opções são oferecidas. Por padrão, uma aplicação simples é criada com algumas configurações iniciais. Mas aqui criaremos um repositório vazio, porque vamos adicionando os projetos individualmente e com maior controle desse processo.
 
-A fim de criar um workspace vazio, usaremos o comando `create-nx-workspace` com alguns parâmetros:
+Para criar um projeto vazio, executaremos o comando `ng new`, informando o nome do workspace (`ng-elements`) e informando à CLI para não criar a aplicação padrão, com o parâmetro `createApplication` recebendo o valor `false`:
 
 ```bash
-npx create-nx-workspace ng-elements --preset=empty --nx-cloud
+ng new ng-elements --createApplication=false
 ```
-
-> No comando acima, além de estarmos definindo o nome do workspace como `ng-elements`, podemos ver outros dois parâmetros: `preset` e `nx-cloud`.
-> 
-> No primeiro deles estamos definindo o valor `empty`, a fim de indicar à Nx CLI que queremos um workspace vazio.
-> 
-> No segundo parâmetro, estamos ativando a utilização da [Nx Cloud](https://nx.app).
 
 A execução do comando tem como resultado a criação de um diretório com o mesmo nome atribuído ao workspace. Onde encontramos uma estrutura como a seguinte:
 
 ![Estrutura do diretório criado a partir do VSCode](assets/vscode-workspace-folder-structure.png)
 
-Um dos arquivos mais importantes em um workspace gerado com a Nx é o `workspace.json`. Tendo uma estrutura bastante similar ao já `angular.json` gerado pela Angular CLI, nele é possível encontrar todos os projetos presentes no workspace. No momento, ao abrir esse arquivo nos deparamos com uma estrutura vazia, justamente porque pedimos um workspace vazio:
+Um dos arquivos mais importantes em um workspace gerado com a Nx é o `angular.json`. Nele é possível encontrar todos os projetos presentes no workspace. No momento, ao abrir esse arquivo nos deparamos com uma estrutura vazia, justamente porque pedimos um workspace vazio:
 
 ```json
 {
-  "version": 2,
-  "projects": {}
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "version": 1,
+  "newProjectRoot": "projects",
+  "projects": {
+  }
 }
 ```
 
 ### Aplicação inicial
 
-Após o workspace ser criado, podemos começar a criar os projetos. Começaremos então criando a aplicação inicial, chamada de `heroes-creator` com a Nx.
-
-Nx é uma ferramenta extensível e com suporte a diferentes frameworks. Essa extensibilidade se dá através de plugins que precisamos instalar no workspace antes de executar comandos referentes àquele framework. Esses plugins são simplesmente bibliotecas que instalamos no repositório.
-
-Para instalar o Angular, vamos executar:
+Após o workspace ser criado, entraremos nele e adicionaremos uma aplicação simples com o seguinte comando:
 
 ```bash
-npm install -D @nrwl/angular
+cd ng-elements
+ng generate application heroes-creator --minimal=true --prefix=hc --routing=false --style=css
 ```
 
-Com o plugin instalado, podemos criar uma aplicação Angular executando o seguinte comando:
+> No comando acima, o parâmetro `--minimal=true` cria a aplicação sem a inicialização dos [testes unitários](https://angular.io/guide/testing) e [testes funcionais](https://angular.io/cli/e2e).
+>
+> O parâmetro `--prefix=hc` define _hc_ como prefixo para todos os componentes criados nessa aplicação, por exemplo `<hc-novo-heroi>`.
+>
+> `--routing=false` cria a aplicação sem [roteamento](https://angular.io/start/routing).
+>
+> `--style=css` cria o projeto sem um [pré-processador de CSS](https://tableless.com.br/pre-processadores-usar-ou-nao-usar/).
+
+A execução do comando `ng generate` criará uma pasta _projects_, adicionará o projeto de nome _heroes-creator_ e alterará o arquivo `angular.json` com uma configuração para esse projeto especificamente, o deixando o padrão para qualquer comando executado neste workspace:
+
+```json
+{
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "version": 1,
+  "newProjectRoot": "projects",
+  "projects": {
+    "heroes-creator": { // <- Aplicação gerada
+      "projectType": "application",
+      // Demais propriedades
+    }
+  },
+  "defaultProject": "heroes-creator" // <- Projeto padrão
+}
+```
+
+Também modificará o arquivo `package.json` adicionando as dependências necessárias para a sua execução e as instalará.
+
+### Executando a aplicação
+
+Após a aplicação ser criada, podemos executá-la com o seguinte comando:
 
 ```bash
-nx generate @nrwl/angular:app heroes-creator --prefix=hc --routing=false --e2eTestRunner=none --unitTestRunner=none --port=4200 --no-interactive --style=css
+ng serve
 ```
 
-TODO: Explicar os parâmetros
+Tendo o seguinte resultado:
+
+![Resultado ng serve](assets/ng-serve-new-application.png)
+
+E com isso podemos abrir o endereço <http://localhost:4200/> no navegador e ver a aplicação em execução:
+
+![Exemplo da aplicação exemplo em execução](assets/ng-serve-new-application-opening-in-browser.png)
