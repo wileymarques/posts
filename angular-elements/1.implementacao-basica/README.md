@@ -2,61 +2,58 @@
 title: Angular Elements - Implementação Básica
 published: true
 description: Implementação Básica de Angular Elements. Criando um Custom Element que contém interação com uma aplicação Angular comum.
-tags: angular, web-components, angular-elements, micro-front-en
+tags: angular, web-components, angular-elements, micro-front-ends
 series: Angular Elements
 ---
 
-Após a [explicação do conceito envolvendo Angular Elements (incluindo referências)](https://dev.to/wilmarques/angular-elements-introducao-351n), vou demonstrar como implementar um componente simples.
+Após a [explicação do conceito envolvendo Angular Elements (incluindo referências)](https://dev.to/wilmarques/angular-elements-introducao-351n), vamos implementar um componente simples.
 
 ## O que será feito
 
-Utilizaremos a [Angular CLI](https://angular.io/cli/) para criar uma aplicação e convertê-la para Angular Elements.
+O Angular, por ser um framework, traz diversas capacidades incluídas no seu pacote. Uma delas é a [Angular CLI](https://angular.io/cli/), capaz de criar projetos, trechos de código e ter outras responsabilidades.
 
-Teremos como base o exemplo disponível no [tutorial do Angular, Tour of Heroes](https://angular.io/tutorial).
+Com a Angular CLI, criaremos um projeto e o converteremos para Angular Elements. Onde teremos como base o exemplo disponível no [tutorial do Angular, Tour of Heroes](https://angular.io/tutorial).
 
-Porém, para simplificar o processo, nesse primeiro momento criaremos apenas a listagem e adição de heróis, não o dashboard.
-
-Nesse exemplo, uma aplicação Angular comum terá a responsabilidade de inclusão dos heróis, enquanto um Angular Elements exibirá a listagem.
+Porém, para simplificar o processo, criaremos apenas a listagem e adição de heróis, não o dashboard. Nesse exemplo, uma aplicação Angular comum terá a responsabilidade de inclusão dos heróis, enquanto um Angular Elements exibirá a listagem.
 
 Ilustração do que será construído:
 
-![Ilustração da listagem de heróis](images/heroes-list-example.png)
+![Ilustração da listagem de heróis](assets/heroes-list-example.png)
 
 ## Configuração do ambiente
 
 Antes de tudo, devemos ter um ambiente corretamente configurado para o processo ocorrer conforme o esperado.
 
-> Mais detalhes sobre a configuração do ambiente podem ser obtidos na [documentação oficial](https://angular.io/guide/setup-local).
-
 ### Node e NPM
 
-A versão 10 do Node é a atualmente recomendada, tanto pelo Angular quanto pela própria equipe do Node.
+A opção padrão para instalação do Node é utilizar o instalador oficial, disponível no site da própria ferramenta: <https://nodejs.org/>.
 
-Uma ótima opção para realizar a instalação é usar algum gerenciador, por exemplo [nvm](https://github.com/nvm-sh/nvm) ou [nvs](https://github.com/jasongin/nvs), porém o [site oficial](https://nodejs.org/) tem instruções para instalação em cada sistema operacional.
+É altamente recomendada a instalação de uma versão LTS (Long Time Support), por ser mais  estável. A versão *current* (ou atual) é quase como uma versão *beta*, onde novas funcionalidades são testadas e é esperado um feedback da comunidade para trazer maior estabilidade na próxima LTS.
 
-A vantagem em usar um gerenciador é a facilidade de atualização e possibilidade em se ter diferentes versões do Node em um mesmo equipamento.
+Contudo, uma ótima opção para realizar a instalação é usar algum gerenciador como [NVM](https://github.com/nvm-sh/nvm) ou [NVS](https://github.com/jasongin/nvs). A vantagem em usar um gerenciador é a facilidade de atualização e possibilidade em se ter diferentes versões do Node em um mesmo equipamento.
 
-> O Node 8 não é mais recomendado, principalmente por estar chegando no [fim do seu ciclo de vida](https://nodejs.org/en/about/releases/).
+Utilizando o NVS, para instalar a versão LTS do Node basta executar os seguintes comando no terminal:
 
-O [NPM](https://www.npmjs.com/) é instalado em conjunto com o Node, sendo 6 a [versão mais atual](https://github.com/npm/cli/releases).
+```bash
+nvs add lts
+nvs use lts
+```
+
+E para verificar a instalação, pode-se executar um comando para a CLI do Node retornar a versão atualmente instalada. Como abaixo:
+
+![Executando `node -v` no Terminal](assets/node-v.png)
 
 ### Angular CLI
 
-Para instalar a Angular CLI, basta executar o seguinte comando na linha de comando:
+Após instalar corretamente o Node, podemos instalar a Angular CLI. Bastando executar o seguinte no terminal:
 
 ```bash
-npm install -g @angular/cli@^8
+npm install -g @angular/cli
 ```
 
-Após a instalação, execute esse comando para verificar o correto funcionamento:
+Tendo um resultado semelhante ao abaixo:
 
-```bash
-ng version
-```
-
-Resultado do comando:
-
-![Resultado do comando ng version](images/ng-version-example.png)
+![Instalando Angular CLI como uma dependência global no npm](assets/npm-install-angular-cli.png)
 
 ## Criação do projeto
 
@@ -103,11 +100,11 @@ ng serve
 
 Tendo o seguinte resultado:
 
-![Resultado ng serve](images/ng-serve-result.png)
+![Resultado ng serve](assets/ng-serve-new-application.png)
 
-E com isso podemos abrir o endereço <http://localhost:4200/> no navegador e ver a aplicação em execução:
+E, em seguida, podemos abrir o endereço <http://localhost:4200/> no navegador e ver a aplicação em execução:
 
-![Exemplo da aplicação exemplo em execução](images/aplicacao-exemplo-execucao.png)
+![Exemplo da aplicação exemplo em execução](assets/ng-serve-new-application-opening-in-browser.png)
 
 ## Criação de heróis
 

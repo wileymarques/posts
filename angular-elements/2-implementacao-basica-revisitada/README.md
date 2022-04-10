@@ -75,7 +75,7 @@ A execução do comando tem como resultado a criação de um diretório com o me
 
 ![Estrutura do diretório criado a partir do VSCode](assets/vscode-workspace-folder-structure.png)
 
-Um dos arquivos mais importantes em um workspace gerado com a Nx é o `angular.json`. Nele é possível encontrar todos os projetos presentes no workspace. No momento, ao abrir esse arquivo nos deparamos com uma estrutura vazia, justamente porque pedimos um workspace vazio:
+Um dos arquivos mais importantes em um workspace é o `angular.json`. Nele é possível encontrar todos os projetos presentes no workspace. No momento, ao abrir esse arquivo nos deparamos com uma estrutura vazia, justamente porque pedimos um workspace vazio:
 
 ```json
 {
