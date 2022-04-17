@@ -28,7 +28,7 @@ Antes de tudo, devemos ter um ambiente corretamente configurado para o processo 
 
 A opção padrão para instalação do Node é utilizar o instalador oficial, disponível no site da própria ferramenta: <https://nodejs.org/>.
 
-É altamente recomendada a instalação de uma versão LTS (Long Time Support), por ser mais  estável. A versão *current* (ou atual) é quase como uma versão *beta*, onde novas funcionalidades são testadas e é esperado um feedback da comunidade para trazer maior estabilidade na próxima LTS.
+É altamente recomendada a instalação de uma versão LTS (Long Time Support), por ser mais  estável. A versão _current_ (ou atual) é quase como uma versão _beta_, onde novas funcionalidades são testadas e é esperado um feedback da comunidade para trazer maior estabilidade na próxima LTS.
 
 Contudo, uma ótima opção para realizar a instalação é usar algum gerenciador como [NVM](https://github.com/nvm-sh/nvm) ou [NVS](https://github.com/jasongin/nvs). A vantagem em usar um gerenciador é a facilidade de atualização e possibilidade em se ter diferentes versões do Node em um mesmo equipamento.
 
@@ -73,7 +73,7 @@ Após o workspace ser criado, entraremos nele e adicionaremos uma aplicação si
 
 ```bash
 cd ng-elements
-ng generate application heroes-creator --prefix=hc --minimal=true --routing=false --style=scss
+ng generate application heroes-creator --prefix=hc --minimal --routing=false --style=scss
 ```
 
 Como pode-se ver, é possível usar parâmetros no comando `generate` para configurar como queremos a aplicação. Nesse caso, além do nome da aplicação (`heroes-creator`), informamos o prefixo `hc` ao invés de usar o padrão `app` (`prefix=hc`), a não criação de testes (`minimal=true`), sem roteamento (`routing=false`) e SCSS como padrão de estilização (`style=scss`).
@@ -106,11 +106,11 @@ E, em seguida, podemos abrir o endereço <http://localhost:4200/> no navegador e
 
 Agora que já temos uma aplicação funcional, podemos começar a alterá-la.
 
-Como qualquer aplicação Angular, o código dessa aplicação fica `src`. Porém, como iniciamos com a criação de um workspace, as aplicações criadas nele ficam localizadas na pasta `projects`. Com isso, podemos encontrar nossa aplicação em `projects/heroes_creator/src`. Como a seguir:
+Como qualquer aplicação Angular, o código dessa aplicação reside no diretório _src_. Porém, como iniciamos com a criação de um workspace, as aplicações criadas nele ficam localizadas na pasta _projects_. Com isso, podemos encontrar nossa aplicação em *projects/heroes_creator/src*. Como a seguir:
 
 ![Estrutura de diretórios da aplicação inicial](assets/heroes-creator-folder-structure.png)
 
-No diretório `src/app` podemos encontrar o componente (`app.component.ts`) e módulo (`app.module.ts`) principais:
+No diretório _src/app_ podemos encontrar o componente (`app.component.ts`) e módulo (`app.module.ts`) principais:
 
 ![Componente principal da aplicação](assets/heroes-creator-folder-structure-main-module-component.png)
 
@@ -172,12 +172,12 @@ export class AppComponent {
 No código acima, podemos ver a referência a um componente ainda não existente: `hc-creator`. Pois o criaremos agora, novamente utilizando a Angular CLI:
 
 ```bash
-ng generate component creator --inlineStyle=true --inlineTemplate=true --skipTests=true --flat=true
+ng generate component creator --inlineStyle --inlineTemplate --skipTests --flat
 ```
 
 Como dito anteriormente, o comando `generate` recebe parâmetros. Neste caso, solicitamos a criação de um componente (`component`) com o nome `creator`, com o estilo e template no mesmo arquivo (`inlineStyle` e `inlineTemplate`), sem testes (`skipTests`) e direto no diretório raiz do projeto (`flat`).
 
-Após esse componente ser criado, mude o conteúdo do seu arquivo `creator.component.ts` para:
+Após esse componente ser criado, mudaremos o conteúdo do seu arquivo (`creator.component.ts`) para:
 
 ```ts
 import { Component, Output, EventEmitter } from '@angular/core';
@@ -223,31 +223,23 @@ export class CreatorComponent {
 }
 ```
 
-Com isso, podemos executar o projeto:
+Com isso, podemos executar o projeto (`ng serve`) e visualizar o resultado no navegador:
 
-```bash
-ng serve
-```
-
-E visualizar o resultado no navegador:
-
-![Resultado após a criação do componente principal](assets/resultado-criacao-componente-principal.png)
+![Resultado após a criação do componente principal](assets/create-heroes-component-result.png)
 
 ### Lista de heróis
 
-Finalmente podemos iniciar a criação do componente usando [Angular Elements](https://angular.io/guide/elements).
+Finalmente podemos chegar no assunto do artigo: [Angular Elements](https://angular.io/guide/elements). Criaremos um novo projeto contendo um componente, o qual receberá por parâmetro (`Input`) a lista de heróis contida no componente principal e a exibirá conforme a ilustração apresentada no início do artigo.
 
-Este componente receberá a lista de heróis contida no componente principal por parâmetro e a exibirá conforme a ilustração apresentada no início do artigo.
-
-Antes de tudo, vamos criar um novo projeto no atual workspace, porém dessa vez criaremos uma [biblioteca](https://angular.io/guide/libraries) onde o componente ficará contido. Além de ser uma biblioteca e não uma aplicação, definemos o prefixo dos seus componentes como _hv_, a fim de diferenciarmos mais facilmente durante o desenvolvimento:
+Começamos criando um novo projeto no workspace, porém dessa vez criaremos uma [biblioteca](https://angular.io/guide/libraries) (`library`). Daremos a ela o nome de `heroes-visualizer` e definiremos seu prefixo (`prefix`) como `hv`, a fim de diferenciar dos componentes da aplicação principal:
 
 ```bash
 ng generate library heroes-visualizer --prefix=hv
 ```
 
-Após a execução do comando acima, o projeto será criado na pasta _projects_ e o arquivo `angular.json` será modificado adicionando uma nova configuração específica para ele. Como podemos ver a seguir:
+Após a execução do comando acima, o projeto será criado na pasta _projects_ e o arquivo _angular.json_ será modificado adicionando uma nova configuração específica para ele. Como ilustrado a seguir:
 
-![Estrutura de pastas após a criação do projeto visualizer](assets/estrutura-apos-criacao-visualizer.png)
+![Estrutura de pastas após a criação do projeto visualizer](assets/folder-structure-heroes-visualizer.png)
 
 A CLI do Angular ainda não nos dá opção de gerar bibliotecas com uma configuração mínima, semelhante ao que fizemos com a aplicação inicial. Portanto vamos excluir os seguintes arquivos desnecessários:
 
@@ -259,26 +251,29 @@ A CLI do Angular ainda não nos dá opção de gerar bibliotecas com uma configu
 >
 > Porém em nada atrapalharão e não nos preocuparemos para não prolongar o artigo.
 
-> Como utilizo [Ubuntu](https://ubuntu.com/), executo o seguinte comando no [Bash](https://en.wikipedia.org/wiki/Bash_(Unix_shell)) para excluir os arquivos:
+> Como utilizo Linux, executo o seguinte comando no [Bash](https://en.wikipedia.org/wiki/Bash_(Unix_shell)) para excluir os arquivos:
 >
 > `rm -rf projects/heroes-visualizer/src/lib/heroes-visualizer.service.ts projects/heroes-visualizer/src/lib/*.spec.ts`
 >
 > Caso utilize outro Sistema Operacional, o comando pode variar.
 
-Após a exclusão desses arquivos, vamos alterar o conteúdo do arquivo `public-api.ts` presente na pasta `projects/heroes-visualizer/src/` para:
+Após a exclusão desses arquivos, vamos alterar o conteúdo do arquivo _public-api.ts_ presente no diretório _projects/heroes-visualizer/src/_ para não mais referenciar o service excluído:
 
-```ts
+```diff
 /*
  * Public API Surface of heroes-visualizer
  */
 
+-export * from './lib/heroes-visualizer.service';
 export * from './lib/heroes-visualizer.component';
 export * from './lib/heroes-visualizer.module';
 ```
 
-Com isso, podemos utilizar na aplicação principal (_heroes-creator_) o componente previamente criado nesta biblioteca, modificando o arquivo `projects/heroes-creator/src/app/app.module.ts` para:
+Em seguida, utilizaremos o componente `hv-heroes-visualizer` dessa biblioteca na aplicação criada anteriormente (`heroes-creator`). Para isso, precisamos importar o módulo dessa biblioteca na aplicação e referenciar o componente onde queremos exibí-lo.
 
-```ts
+Começamos importando o módulo da biblioteca (`HeroesVisualizerModule`) no módulo principal da aplicação (_projects/heroes-creator/src/app/app.module.ts_):
+
+```diff
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
@@ -286,7 +281,7 @@ import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { CreatorComponent } from './creator.component';
 
-import { HeroesVisualizerModule } from 'heroes-visualizer';
++import { HeroesVisualizerModule } from 'heroes-visualizer';
 
 @NgModule({
   declarations: [
@@ -296,7 +291,7 @@ import { HeroesVisualizerModule } from 'heroes-visualizer';
   imports: [
     BrowserModule,
     FormsModule,
-    HeroesVisualizerModule,
++   HeroesVisualizerModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
@@ -304,9 +299,9 @@ import { HeroesVisualizerModule } from 'heroes-visualizer';
 export class AppModule { }
 ```
 
-E o arquivo `projects/heroes-creator/src/app/app.component.ts` para:
+E referenciando o componente `hv-heroes-visualizer` no componente principal da aplicação (_projects/heroes-creator/src/app/app.component.ts_):
 
-```ts
+```diff
 import { Component } from '@angular/core';
 
 @Component({
@@ -319,7 +314,7 @@ import { Component } from '@angular/core';
         {{ hero }}
       </li>
     </ul>
-    <hv-heroes-visualizer></hv-heroes-visualizer>
++   <hv-heroes-visualizer></hv-heroes-visualizer>
   `,
 })
 export class AppComponent {
@@ -335,6 +330,8 @@ export class AppComponent {
 
 }
 ```
+
+//TODO: CONTINUAR DAQUI
 
 Assim, podemos executar o projeto para verificar o resultado no navegador, mas antes precisamos [compilar a biblioteca](https://angular.io/guide/creating-libraries#using-your-own-library-in-apps) com o comando:
 
