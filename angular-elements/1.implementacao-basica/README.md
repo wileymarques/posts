@@ -61,7 +61,7 @@ Tendo um resultado semelhante ao abaixo:
 
 A CLI do Angular possibilita a criação de diversos projetos dentro de um mesmo [workspace](https://angular.io/guide/glossary#workspace), para simplificar a criação de [monorepos](https://www.atlassian.com/git/tutorials/monorepos).
 
-Para usufruirmos dessa funcionalidade, antes iniciaremos um workspace limpo (sem projetos) utilizando o comando [`ng new`](https://angular.io/cli/new):
+Para usufruirmos dessa funcionalidade, iniciaremos com a criação de um workspace limpo (sem projetos) utilizando o comando [`ng new`](https://angular.io/cli/new) e o parâmetro `--createApplication` com o valor `false`.
 
 ```bash
 ng new ng-elements --createApplication=false
@@ -69,26 +69,20 @@ ng new ng-elements --createApplication=false
 
 ### Aplicação inicial
 
-Após o workspace ser criado, entraremos nele e adicionaremos uma aplicação simples com o seguinte:
+Após o workspace ser criado, entraremos nele e adicionaremos uma aplicação simples com o comando `ng generate application`:
 
 ```bash
 cd ng-elements
-ng generate application heroes-creator --minimal=true --prefix=hc --routing=false --style=css
+ng generate application heroes-creator --prefix=hc --minimal=true --routing=false --style=scss
 ```
 
-> No comando acima, o parâmetro `--minimal=true` cria a aplicação sem a inicialização dos [testes unitários](https://angular.io/guide/testing) e [testes funcionais](https://angular.io/cli/e2e).
->
-> O parâmetro `--prefix=hc` define _hc_ como prefixo para todos os componentes criados nessa aplicação, por exemplo `<hc-novo-heroi>`.
->
-> `--routing=false` cria a aplicação sem [roteamento](https://angular.io/start/routing).
->
-> Já `--style=css` cria o projeto sem um [pré-processador de CSS](https://tableless.com.br/pre-processadores-usar-ou-nao-usar/).
+Como pode-se ver, é possível usar parâmetros no comando `generate` para configurar como queremos a aplicação. Nesse caso, além do nome da aplicação (`heroes-creator`), informamos o prefixo `hc` ao invés de usar o padrão `app` (`prefix=hc`), a não criação de testes (`minimal=true`), sem roteamento (`routing=false`) e SCSS como padrão de estilização (`style=scss`).
 
 A execução do comando `ng generate` criará uma pasta _projects_, adicionará o projeto de nome _heroes-creator_ e alterará o arquivo `angular.json` com uma configuração para esse projeto especificamente.
 
 Também modificará o arquivo `package.json` adicionando as dependências necessárias para a sua execução e as instalará.
 
-Além disso, esse novo projeto passará a ser o padrão para qualquer comando executado neste workspace.
+Além disso, esse novo projeto passará a ser o padrão para qualquer comando executado neste workspace. Esse ponto também é importante salientar, pois quando tivermos mais projetos nesse workspace será necessário informar ao Angular em qual devem ser executados os comandos.
 
 ### Executando a aplicação
 
@@ -110,17 +104,18 @@ E, em seguida, podemos abrir o endereço <http://localhost:4200/> no navegador e
 
 ### Componente principal
 
-Agora que já temos uma aplicação (exemplo) funcional, podemos alterá-la para ficar de acordo com o esperado.
+Agora que já temos uma aplicação funcional, podemos começar a alterá-la.
 
-Todo o código dessa aplicação fica no diretório _src_ em _heroes_creator_, localizado na pasta _projects_, como a seguir:
+Como qualquer aplicação Angular, o código dessa aplicação fica `src`. Porém, como iniciamos com a criação de um workspace, as aplicações criadas nele ficam localizadas na pasta `projects`. Com isso, podemos encontrar nossa aplicação em `projects/heroes_creator/src`. Como a seguir:
 
-![Estrutura de diretórios da aplicação inicial](images/estrutura-app-incial.png)
+![Estrutura de diretórios da aplicação inicial](assets/heroes-creator-folder-structure.png)
 
-Dentro da pasta _src_, encontramos a _app_ onde está contido o componente e o módulo principal da aplicação, `app.component.ts` e `app.module.ts`:
+No diretório `src/app` podemos encontrar o componente (`app.component.ts`) e módulo (`app.module.ts`) principais:
 
-![Componente principal da aplicação](images/app-inicial-component.png)
+![Componente principal da aplicação](assets/heroes-creator-folder-structure-main-module-component.png)
 
-Antes de tudo, substituiremos o conteúdo do arquivo `app.module.ts` para:
+Então comecemos o projeto apagando todo o conteúdo do módulo principal (`app.module.ts`) e alterando para:
+
 
 ```ts
 import { BrowserModule } from '@angular/platform-browser';
@@ -174,23 +169,13 @@ export class AppComponent {
 }
 ```
 
-Prestando atenção ao código acima, podemos ver uma referência a um componente ainda não criado, `hc-creator`. O criaremos agora utilizando os comandos da Angular CLI:
+No código acima, podemos ver a referência a um componente ainda não existente: `hc-creator`. Pois o criaremos agora, novamente utilizando a Angular CLI:
 
 ```bash
 ng generate component creator --inlineStyle=true --inlineTemplate=true --skipTests=true --flat=true
 ```
 
-> Os parâmetros usados acima fazem com que apenas um arquivo seja criado, contendo o template e styles ao invés de arquivos separados para cada um.
->
-> Também não serão criados testes unitários, além de o arquivo ser criado na raiz do projeto, ao invés de estar contido em uma pasta própria.
->
-> Exemplo do resultado do comando sem os parâmetros:
->
-> ![Exemplo do resultado do comando com os parâmetros](images/exemplo-generate-sem-params.png)
->
-> Exemplo com os parâmetros:
->
-> ![Exemplo do resultado do comando sem os parâmetros](images/exemplo-generate-com-params.png)
+Como dito anteriormente, o comando `generate` recebe parâmetros. Neste caso, solicitamos a criação de um componente (`component`) com o nome `creator`, com o estilo e template no mesmo arquivo (`inlineStyle` e `inlineTemplate`), sem testes (`skipTests`) e direto no diretório raiz do projeto (`flat`).
 
 Após esse componente ser criado, mude o conteúdo do seu arquivo `creator.component.ts` para:
 
@@ -246,7 +231,7 @@ ng serve
 
 E visualizar o resultado no navegador:
 
-![Resultado após a criação do componente principal](images/resultado-criacao-componente-principal.png)
+![Resultado após a criação do componente principal](assets/resultado-criacao-componente-principal.png)
 
 ### Lista de heróis
 
@@ -262,7 +247,7 @@ ng generate library heroes-visualizer --prefix=hv
 
 Após a execução do comando acima, o projeto será criado na pasta _projects_ e o arquivo `angular.json` será modificado adicionando uma nova configuração específica para ele. Como podemos ver a seguir:
 
-![Estrutura de pastas após a criação do projeto visualizer](images/estrutura-apos-criacao-visualizer.png)
+![Estrutura de pastas após a criação do projeto visualizer](assets/estrutura-apos-criacao-visualizer.png)
 
 A CLI do Angular ainda não nos dá opção de gerar bibliotecas com uma configuração mínima, semelhante ao que fizemos com a aplicação inicial. Portanto vamos excluir os seguintes arquivos desnecessários:
 
@@ -359,7 +344,7 @@ ng build heroes-visualizer
 
 Dessa forma, ao executar o projeto (`ng serve`) temos o seguinte resultado no navegador:
 
-![Exemplo da aplicação utilizando o componente visualizer](images/aplicacao-visualizer-execucao.png)
+![Exemplo da aplicação utilizando o componente visualizer](assets/aplicacao-visualizer-execucao.png)
 
 Agora vamos modificar alguns arquivos para transferir a exibição dos heróis para o componente `hv-heroes-visualizer`, além de já implementarmos uma funcionalidade de remoção de determinados heróis.
 
@@ -528,7 +513,7 @@ export class AppModule { }
 
 Agora podemos compilar novamente a biblioteca (`ng build heroes-visualizer`) e executar o projeto principal (`ng serve`), tendo o seguinte resultado:
 
-![Resultado da execução após conclusão da listagem dos heróis](images/resultado-finalizacao-listagem-herois.png)
+![Resultado da execução após conclusão da listagem dos heróis](assets/resultado-finalizacao-listagem-herois.png)
 
 ## Convertendo lista de heróis em Angular Elements
 
@@ -647,7 +632,7 @@ Já com um Angular Element devemos utilizar a propriedade [`detail`](https://dev
 
 Mesmo após essas mudanças, ao executarmos a aplicação recebemos o seguinte erro:
 
-![Erro ao realizar binding em Custom Elements](images/resultado-erro-sem-custom-element-schema.png)
+![Erro ao realizar binding em Custom Elements](assets/resultado-erro-sem-custom-element-schema.png)
 
 Isso acontece porque o Angular está tentando encontrar a propriedade desse elemento como se fosse um componente _comum_, mas ele deve ser tratado como um Custom Element. E para que isso ocorra conforme o esperado, devemos adicionar o `schema` `CUSTOM_ELEMENTS_SCHEMA` ao módulo principal da aplicação.
 
@@ -684,7 +669,7 @@ export class AppModule { }
 
 Com isso corrigido, podemos compilar novamente a biblioteca (`ng build heroes-visualizer`) e executar a aplicação normalmente (`ng serve`) para vermos o resultado:
 
-![Resultado da execução da aplicação com listagem de heróis usando Angular Elements](images/resultado-finalizacao-listagem-herois-custom-element.png)
+![Resultado da execução da aplicação com listagem de heróis usando Angular Elements](assets/resultado-finalizacao-listagem-herois-custom-element.png)
 
 ## Próximos passos
 
