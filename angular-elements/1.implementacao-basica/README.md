@@ -331,7 +331,47 @@ export class AppComponent {
 }
 ```
 
-//TODO: CONTINUAR DAQUI
+Com isso, podemos executar o projeto (`npm start`). Mas imediatamente podemos ver alguns erros acontecendo durante a inicialização do projeto, como:
+
+![Terminal mostrando erros reportados pela Angular CLI dizendo que a biblioteca `heroes-visualizer` não foi encontrada](assets/heroes-visualizer-library-not-found-terminal-error.png)
+
+Isso acontece porque, apesar de estar no mesmo workspace, a `heroes-visualizer` ainda é uma biblioteca. Por padrão, o Angular tentará usar a biblioteca como se fosse uma externa, mas não a encontrará porque em nenhum momento a instalamos.
+
+Para funcionar, deveríamos compilar a `heroes-visualizer` antes de executar o projeto e a instalar com as maneiras convencionais do _npm_.
+
+Mas existe uma alternativa em projetos utilizando TypeScript, que é o caso do Angular, onde podemos indicar ao seu compilador onde procurar bibliotecas específicas. Essa configuração é realizada no arquivo _tsconfig.json_.
+
+Abrindo o arquivo _tsconfig.json_ podemos ver uma propriedade `paths` com o caminho da biblioteca `heroes-visualizer` sendo apontado para `dist`:
+
+```json
+/* To learn more about this file see: https://angular.io/config/tsconfig. */
+{
+  ...
+    "paths": {
+      "heroes-visualizer": [
+        "dist/heroes-visualizer/heroes-visualizer",
+        "dist/heroes-visualizer"
+      ]
+    },
+  ...
+}
+```
+
+Dessa forma, bastaria compilarmos a biblioteca com o comando `ng build heroes-visualizer` e a pasta _dist_ seria gerada:
+
+![Comando `ng build heroes-visualizer` sendo executado no Terminal, com o resultado positivo da compilação](assets/ng-build-heroes-visualizer.png)
+
+Com o código compilado dentro desse diretório:
+
+![Arquivos gerados pelo comando `ng build heroes-visualizer` sendo mostrados no VSCode](assets/ng-build-heroes-visualizer-dist-result.png)
+
+Isso feito, poderíamos executar o projeto (`npm start`) e teríamos uma execução com sucesso:
+
+![Terminal mostrando sucesso da execução do comando `npm start`](assets/npm-start-positivo-result-after-build-heroes-visualizer.png)
+
+
+
+//: TODO mudar caminho da lib no tsconfig para apontar para pasta não compilada
 
 Assim, podemos executar o projeto para verificar o resultado no navegador, mas antes precisamos [compilar a biblioteca](https://angular.io/guide/creating-libraries#using-your-own-library-in-apps) com o comando:
 
